@@ -1,0 +1,62 @@
+# evo game
+
+import time
+import random
+
+executor = 2
+food = 1
+
+
+user = True
+while user == True:
+
+	"""
+	Eating executor
+	"""
+	user_eat = True
+	while user_eat == True:# cycle
+		eat = round(random.random())# gives a random number
+		if eat == 1:
+			food = food + (executor * 2)# gives food
+		if eat == 0:
+			food = food - ((executor * 1) - 1)# lack of food
+		user_eat = False
+
+	"""
+	death due to lack of food
+	"""
+	user_death = True
+	while user_death == True:
+		if food < 0 or food == 0:# check
+			executor = executor - 1
+			food = food + 1
+		user_death = False
+
+	"""	
+	breeding while getting the right amount of food
+	"""
+	user_breeding = True
+	while user_breeding == True:
+		if food > 4 or food == 4:
+			executor = executor + 1
+			food = food - 3
+		user_breeding = False
+
+	"""
+	confirmation that if the performers become less or equal to zero, the program stops
+	"""
+	if executor < 0 or executor == 0:
+		print("All representatives have died")
+		break
+
+	"""
+	conclusion
+	"""
+	user = False
+	print("Executor = " + str(executor))
+	print("Food = " + str(food))
+	time.sleep(2)
+	user = True
+
+if food > int(10000):
+	food = food - 1
